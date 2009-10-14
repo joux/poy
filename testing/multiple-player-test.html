@@ -83,8 +83,8 @@
 
         function play() {
           if (ytplayer) {
-            ytplayer.playVideo();
-		ytplayer2.playVideo();
+		  window.setTimeout("ytplayer.playVideo()",parseInt(document.getElementById('delayseconds').value)*1000);
+		  window.setTimeout("ytplayer2.playVideo()",parseInt(document.getElementById('delayseconds2').value)*1000);
           }
         }
 
@@ -251,13 +251,13 @@
     <div>
       <input type="text" size="11" id="loadvideoid" value="u1zgFlCw8Aw" />
       <a href="javascript:void(0)" onclick="loadNewVideo(document.getElementById('loadvideoid').value, document.getElementById('startseconds').value)">&lt;-
-        Load video 1</a> | Start at: <input type="text" size="4" id="startseconds" value="0" />
+        Load video 1</a> | Start at: <input type="text" size="4" id="startseconds" value="0" /> | Start after: <input type="text" size="4" id="delayseconds" value="0" />
     </div>
     <br />
     <div>
       <input type="text" size="11" id="loadvideoid2" value="AWVr348kvGc" />
       <a href="javascript:void(0)" onclick="loadNewVideo2(document.getElementById('loadvideoid2').value, document.getElementById('startseconds2').value)">&lt;-
-        Load video 2</a> | Start at: <input type="text" size="4" id="startseconds2" value="0" />
+        Load video 2</a> | Start at: <input type="text" size="4" id="startseconds2" value="0" /> | Start after: <input type="text" size="4" id="delayseconds2" value="0" />
     </div>
     <br />
     <div>
