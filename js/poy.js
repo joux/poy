@@ -104,12 +104,17 @@ function startTimeline(){
 	$(this).oneTime(parseInt($('#videoDelay4').val())+1, function() {
 		$('#ytplayer4')[0].playVideo();
 	});
-	$(this).everyTime(500,function(){
-		refreshTimeline();
+	$(this).everyTime(500,"timelineProgress",function(){
+		refreshTimelineProgress();
 	});
 	currentPosition=0;
 }
 function stopAll(){
+	// Stop progress marker:
+	$(this).stopTime("timelineProgress");
+	currentPosition=0;
+	refreshTimelineProgress();
+	// Reset videos:
 	loadVideos();
 	/*
 	$('#ytplayer1')[0].seekTo(0,true);
@@ -224,7 +229,8 @@ function refreshTimeline(){
 	$('#clip3').css('width',duration3*pixelsPerSecond);
 	$('#clip4').css('margin-left',delay4*pixelsPerSecond);
 	$('#clip4').css('width',duration4*pixelsPerSecond);
-	
+}
+function refreshTimelineProgress(){
 	$('#progressMarker').css('width',currentPosition*pixelsPerSecond);
 	currentPosition+=pixelsPerSecond/2;
 }
