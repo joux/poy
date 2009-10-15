@@ -46,7 +46,10 @@ $(document).ready(
 			}
 		);
 		
+		// Check for parameters in Url:
 		parseParamsFromUrl();
+		// Write back, in case we have loaded with example default settings:
+		refreshParamsUrl();
 		$('.refreshParamsUrlTrigger').change(function(){
 			refreshParamsUrl();
 		});
