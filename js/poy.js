@@ -4,8 +4,8 @@ $(document).ready(
 		$('#player1').flash(
 			{
 				swf: 'http://www.youtube.com/apiplayer?enablejsapi=1&playerapiid=ytplayer1',
-				width: 480,
-				height: 270,
+				width: 460,
+				height: 259,
 				params: params,
 				attrs: {
 					id: 'ytplayer1'
@@ -15,8 +15,8 @@ $(document).ready(
 		$('#player2').flash(
 			{
 				swf: 'http://www.youtube.com/apiplayer?enablejsapi=1&playerapiid=ytplayer2',
-				width: 480,
-				height: 270,
+				width: 460,
+				height: 259,
 				params: params,
 				attrs: {
 					id: 'ytplayer2'
@@ -26,8 +26,8 @@ $(document).ready(
 		$('#player3').flash(
 			{
 				swf: 'http://www.youtube.com/apiplayer?enablejsapi=1&playerapiid=ytplayer3',
-				width: 480,
-				height: 270,
+				width: 460,
+				height: 259,
 				params: params,
 				attrs: {
 					id: 'ytplayer3'
@@ -37,8 +37,8 @@ $(document).ready(
 		$('#player4').flash(
 			{
 				swf: 'http://www.youtube.com/apiplayer?enablejsapi=1&playerapiid=ytplayer4',
-				width: 480,
-				height: 270,
+				width: 460,
+				height: 259,
 				params: params,
 				attrs: {
 					id: 'ytplayer4'
