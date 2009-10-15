@@ -57,7 +57,7 @@ function onYouTubePlayerReady(playerId){
 function start(){
 	loadVideos();
 	// Give clips some time to load before starting them:
-	$(this).oneTime(2000, function(){startTimeline();} )
+	$(this).oneTime(5000, function(){startTimeline();} )
 }
 
 function loadVideos(){
@@ -78,16 +78,16 @@ function loadVideos(){
 	$('#ytplayer4')[0].pauseVideo();
 }
 function startTimeline(){
-	$(this).oneTime($('#videoDelay1').val(), function() {
+	$(this).oneTime(parseInt($('#videoDelay1').val())+1, function() {
 	    $('#ytplayer1')[0].playVideo();
 	});
-	$(this).oneTime($('#videoDelay2').val(), function() {
+	$(this).oneTime(parseInt($('#videoDelay2').val())+1, function() {
 	    $('#ytplayer2')[0].playVideo();
 	});
-	$(this).oneTime($('#videoDelay3').val(), function() {
+	$(this).oneTime(parseInt($('#videoDelay3').val())+1, function() {
 	    $('#ytplayer3')[0].playVideo();
 	});
-	$(this).oneTime($('#videoDelay4').val(), function() {
+	$(this).oneTime(parseInt($('#videoDelay4').val())+1, function() {
 	    $('#ytplayer4')[0].playVideo();
 	});
 }
