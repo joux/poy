@@ -46,6 +46,10 @@ $(document).ready(
 			}
 		);
 		
+		parseParamsFromUrl();
+		$('.refreshParamsUrlTrigger').change(function(){
+			refreshParamsUrl();
+		});
 	}
 );
 
@@ -106,4 +110,74 @@ function onPlayerStateChange(newState){
 		$('#ytplayer4')[0].getPlayerState()==2
 		){
 		}
+}
+
+function parseParamsFromUrl(){
+	if(getQueryVariable('delay1')){
+		$('#videoDelay1').val(
+			getQueryVariable('delay1')
+			);
+	}
+	if(getQueryVariable('delay2')){
+		$('#videoDelay2').val(
+			getQueryVariable('delay2')
+			);
+	}
+	if(getQueryVariable('delay3')){
+		$('#videoDelay3').val(
+			getQueryVariable('delay3')
+			);
+	}
+	if(getQueryVariable('delay4')){
+		$('#videoDelay4').val(
+			getQueryVariable('delay4')
+			);
+	}
+	
+	if(getQueryVariable('video1')){
+		$('#videoUrl1').val(
+			getQueryVariable('video1')
+			);
+	}
+	if(getQueryVariable('video2')){
+		$('#videoUrl2').val(
+			getQueryVariable('video2')
+			);
+	}
+	if(getQueryVariable('video3')){
+		$('#videoUrl3').val(
+			getQueryVariable('video3')
+			);
+	}
+	if(getQueryVariable('delay4')){
+		$('#videoUrl4').val(
+			getQueryVariable('video4')
+			);
+	}
+}
+function refreshParamsUrl(){
+	$('#paramsUrl').val(
+		'http://localhost/poy/'+
+		'?'+
+		'video1='+$('#videoUrl1').val()+'&'+
+		'delay1='+$('#videoDelay1').val()+'&'+
+		'video2='+$('#videoUrl2').val()+'&'+
+		'delay2='+$('#videoDelay2').val()+'&'+
+		'video3='+$('#videoUrl3').val()+'&'+
+		'delay3='+$('#videoDelay3').val()+'&'+
+		'video4='+$('#videoUrl4').val()+'&'+
+		'delay4='+$('#videoDelay4').val()
+		);
+}
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if (pair[0] == variable) {
+      return pair[1];
+    }
+  } 
+  //alert('Query Variable ' + variable + ' not found');
+  return false;
 }
