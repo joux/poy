@@ -50,6 +50,12 @@ $(document).ready(
 		$('.refreshParamsUrlTrigger').change(function(){
 			refreshParamsUrl();
 		});
+		$('.reloadVideosTrigger').change(function(){
+			loadVideos();
+		});
+		$('.refreshTimelineTrigger').change(function(){
+			refreshTimeline();
+		});
 	}
 );
 
@@ -58,31 +64,32 @@ var currentPosition=0;
 function onYouTubePlayerReady(playerId){
 	//$('#ytplayer1')[0].loadVideoById("ifAfhXtzQfc", 1);
 	//$('#ytplayer1')[0].playVideo();
+	loadVideos();
 }
 
 function start(){
-	loadVideos();
-	// Give clips some time to load before starting them:
-	$(this).oneTime(5000, function(){startTimeline();} )
-	refreshTimeline();
+	startTimeline();
 }
 
 function loadVideos(){
-	$('#ytplayer1')[0].loadVideoById($('#videoUrl1').val(), 0);
+	$('#ytplayer1')[0].loadVideoById($('#videoUrl1').val(), 0,'small');
 	$('#ytplayer1')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer1')[0].pauseVideo();
 	
-	$('#ytplayer2')[0].loadVideoById($('#videoUrl2').val(), 0);
+	$('#ytplayer2')[0].loadVideoById($('#videoUrl2').val(), 0,'small');
 	$('#ytplayer2')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer2')[0].pauseVideo();
 	
-	$('#ytplayer3')[0].loadVideoById($('#videoUrl3').val(), 0);
+	$('#ytplayer3')[0].loadVideoById($('#videoUrl3').val(), 0,'small');
 	$('#ytplayer3')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer3')[0].pauseVideo();
 	
-	$('#ytplayer4')[0].loadVideoById($('#videoUrl4').val(), 0);
+	$('#ytplayer4')[0].loadVideoById($('#videoUrl4').val(), 0,'small');
 	$('#ytplayer4')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer4')[0].pauseVideo();
+	$(this).oneTime(2000, function(){
+		refreshTimeline();
+		} );
 }
 function startTimeline(){
 	$(this).oneTime(parseInt($('#videoDelay1').val())+1, function() {
@@ -103,10 +110,16 @@ function startTimeline(){
 	currentPosition=0;
 }
 function stopAll(){
+	loadVideos();
+	/*
+	$('#ytplayer1')[0].seekTo(0,true);
 	$('#ytplayer1')[0].stopVideo();
+	$('#ytplayer2')[0].seekTo(0,true);
 	$('#ytplayer2')[0].stopVideo();
+	$('#ytplayer3')[0].seekTo(0,true);
 	$('#ytplayer3')[0].stopVideo();
-	$('#ytplayer4')[0].stopVideo();
+	$('#ytplayer4')[0].seekTo(0,true);
+	$('#ytplayer4')[0].stopVideo();*/
 }
 
 function onPlayerStateChange(newState){
@@ -225,6 +238,5 @@ function getQueryVariable(variable) {
       return pair[1];
     }
   } 
-  //alert('Query Variable ' + variable + ' not found');
   return false;
 }
