@@ -53,6 +53,8 @@ $(document).ready(
 	}
 );
 
+var currentPosition=0;
+
 function onYouTubePlayerReady(playerId){
 	//$('#ytplayer1')[0].loadVideoById("ifAfhXtzQfc", 1);
 	//$('#ytplayer1')[0].playVideo();
@@ -62,6 +64,7 @@ function start(){
 	loadVideos();
 	// Give clips some time to load before starting them:
 	$(this).oneTime(5000, function(){startTimeline();} )
+	refreshTimeline();
 }
 
 function loadVideos(){
@@ -83,17 +86,21 @@ function loadVideos(){
 }
 function startTimeline(){
 	$(this).oneTime(parseInt($('#videoDelay1').val())+1, function() {
-	    $('#ytplayer1')[0].playVideo();
+		$('#ytplayer1')[0].playVideo();
 	});
 	$(this).oneTime(parseInt($('#videoDelay2').val())+1, function() {
-	    $('#ytplayer2')[0].playVideo();
+		$('#ytplayer2')[0].playVideo();
 	});
 	$(this).oneTime(parseInt($('#videoDelay3').val())+1, function() {
-	    $('#ytplayer3')[0].playVideo();
+		$('#ytplayer3')[0].playVideo();
 	});
 	$(this).oneTime(parseInt($('#videoDelay4').val())+1, function() {
-	    $('#ytplayer4')[0].playVideo();
+		$('#ytplayer4')[0].playVideo();
 	});
+	$(this).everyTime(500,function(){
+		refreshTimeline();
+	});
+	currentPosition=0;
 }
 function stopAll(){
 	$('#ytplayer1')[0].stopVideo();
@@ -169,6 +176,46 @@ function refreshParamsUrl(){
 		'delay4='+$('#videoDelay4').val()
 		);
 }
+
+function refreshTimeline(){
+	duration1=$('#ytplayer1')[0].getDuration();
+	duration2=$('#ytplayer2')[0].getDuration();
+	duration3=$('#ytplayer3')[0].getDuration();
+	duration4=$('#ytplayer4')[0].getDuration();
+	
+	delay1=parseInt($('#videoDelay1').val())/1000;
+	delay2=parseInt($('#videoDelay2').val())/1000;
+	delay3=parseInt($('#videoDelay3').val())/1000;
+	delay4=parseInt($('#videoDelay4').val())/1000;
+	// Determine longest timeline element:
+	timelineLength=0;
+	if(duration1+delay1>timelineLength){
+		timelineLength=duration1+delay1;
+	}
+	if(duration2+delay2>timelineLength){
+		timelineLength=duration2+delay2;
+	}
+	if(duration3+delay3>timelineLength){
+		timelineLength=duration3+delay3;
+	}
+	if(duration4+delay4>timelineLength){
+		timelineLength=duration4+delay4;
+	}
+	
+	pixelsPerSecond=940/timelineLength;
+	$('#clip1').css('margin-left',delay1*pixelsPerSecond);
+	$('#clip1').css('width',duration1*pixelsPerSecond);
+	$('#clip2').css('margin-left',delay2*pixelsPerSecond);
+	$('#clip2').css('width',duration2*pixelsPerSecond);
+	$('#clip3').css('margin-left',delay3*pixelsPerSecond);
+	$('#clip3').css('width',duration3*pixelsPerSecond);
+	$('#clip4').css('margin-left',delay4*pixelsPerSecond);
+	$('#clip4').css('width',duration4*pixelsPerSecond);
+	
+	$('#progressMarker').css('width',currentPosition*pixelsPerSecond);
+	currentPosition+=pixelsPerSecond/2;
+}
+
 function getQueryVariable(variable) {
   var query = window.location.search.substring(1);
   var vars = query.split("&");

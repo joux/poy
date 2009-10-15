@@ -26,3 +26,19 @@ a.button{
 a.button:hover{
 	background-color: #fff;
 }
+.timelineTrack{
+	margin: 2px 0;
+}
+.timelineClip{
+	height: 12px;
+	width: 0px;
+	margin-left: 60px;
+	background-color: #f00;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+#progressMarker{
+	border-right: 2px solid #fff;
+	height: 12px;
+}
