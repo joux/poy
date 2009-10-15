@@ -182,7 +182,7 @@ function parseParamsFromUrl(){
 }
 function refreshParamsUrl(){
 	$('#paramsUrl').val(
-		'http://localhost/poy/'+
+		'http://joux.github.com/poy/'+
 		'?'+
 		'video1='+$('#videoUrl1').val()+'&'+
 		'delay1='+$('#videoDelay1').val()+'&'+
