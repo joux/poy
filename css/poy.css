@@ -1,0 +1,24 @@
+label{
+	display: block;
+}
+input{
+	border: 1px solid #ddd;
+}
+legend{
+	font-size: 18px;
+	color: #ddd;
+	font-weight: bold;
+}
+a.button{
+	border: 1px solid #aaa;
+	padding: 1px 4px;
+	color: #000;
+	text-decoration: none;
+	background-color: #ddd;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+}
+a.button:hover{
+	background-color: #fff;
+}
