@@ -46,10 +46,6 @@ $(document).ready(
 			}
 		);
 		
-		// Check for parameters in Url:
-		parseParamsFromUrl();
-		// Write back, in case we have loaded with example default settings:
-		refreshParamsUrl();
 		$('.refreshParamsUrlTrigger').change(function(){
 			refreshParamsUrl();
 		});
@@ -59,6 +55,39 @@ $(document).ready(
 		$('.refreshTimelineTrigger').change(function(){
 			refreshTimeline();
 		});
+		
+		$('#volumeSlider1').slider({ 
+			value: 100,
+			change:function(event,ui){
+				$('#ytplayer1')[0].setVolume(ui.value);
+				refreshParamsUrl();
+			}
+		});
+		$('#volumeSlider2').slider({ 
+			value: 100,
+			change:function(event,ui){
+				$('#ytplayer2')[0].setVolume(ui.value);
+				refreshParamsUrl();
+			}
+		});
+		$('#volumeSlider3').slider({ 
+			value: 100,
+			change:function(event,ui){
+				$('#ytplayer3')[0].setVolume(ui.value);
+				refreshParamsUrl();
+			}
+		});
+		$('#volumeSlider4').slider({ 
+			value: 100,
+			change:function(event,ui){
+				$('#ytplayer4')[0].setVolume(ui.value);
+				refreshParamsUrl();
+			}
+		});
+		// Check for parameters in Url:
+		parseParamsFromUrl();
+		// Write back, in case we have loaded with example default settings:
+		refreshParamsUrl();
 	}
 );
 
@@ -182,6 +211,27 @@ function parseParamsFromUrl(){
 			getQueryVariable('video4')
 			);
 	}
+	
+	if(getQueryVariable('volume1')){
+		$('#volumeSlider1').slider('option', 'value',
+			getQueryVariable('volume1')
+			);
+	}
+	if(getQueryVariable('volume2')){
+		$('#volumeSlider2').slider('option', 'value',
+			getQueryVariable('volume2')
+			);
+	}
+	if(getQueryVariable('volume3')){
+		$('#volumeSlider3').slider('option', 'value',
+			getQueryVariable('volume3')
+			);
+	}
+	if(getQueryVariable('volume4')){
+		$('#volumeSlider4').slider('option', 'value',
+			getQueryVariable('volume4')
+			);
+	}
 }
 function refreshParamsUrl(){
 	$('#paramsUrl').val(
@@ -189,12 +239,16 @@ function refreshParamsUrl(){
 		'?'+
 		'video1='+$('#videoUrl1').val()+'&'+
 		'delay1='+$('#videoDelay1').val()+'&'+
+		'volume1='+$('#volumeSlider1').slider('option', 'value')+'&'+
 		'video2='+$('#videoUrl2').val()+'&'+
 		'delay2='+$('#videoDelay2').val()+'&'+
+		'volume2='+$('#volumeSlider2').slider('option', 'value')+'&'+
 		'video3='+$('#videoUrl3').val()+'&'+
 		'delay3='+$('#videoDelay3').val()+'&'+
+		'volume3='+$('#volumeSlider3').slider('option', 'value')+'&'+
 		'video4='+$('#videoUrl4').val()+'&'+
-		'delay4='+$('#videoDelay4').val()
+		'delay4='+$('#videoDelay4').val()+'&'+
+		'volume4='+$('#volumeSlider4').slider('option', 'value')
 		);
 }
 

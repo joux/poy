@@ -42,3 +42,6 @@ a.button:hover{
 	border-right: 2px solid #fff;
 	height: 12px;
 }
+.volumeSlider{
+	width: 100px;
+}
