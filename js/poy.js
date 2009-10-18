@@ -277,7 +277,7 @@ function refreshTimeline(){
 		timelineLength=duration4+delay4;
 	}
 	
-	pixelsPerSecond=940/timelineLength;
+	pixelsPerSecond=$('#timeline').width()/timelineLength;
 	$('#clip1').css('margin-left',delay1*pixelsPerSecond);
 	$('#clip1').css('width',duration1*pixelsPerSecond);
 	$('#clip2').css('margin-left',delay2*pixelsPerSecond);
