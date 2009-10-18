@@ -250,6 +250,7 @@ function refreshParamsUrl(){
 		'delay4='+$('#videoDelay4').val()+'&'+
 		'volume4='+$('#volumeSlider4').slider('option', 'value')
 		);
+	$('#tinyUrlLink').attr('href','http://tinyurl.com/create.php?url='+$('#paramsUrl').val())
 }
 
 function refreshTimeline(){

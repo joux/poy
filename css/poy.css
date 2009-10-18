@@ -1,6 +1,15 @@
 body{
 	background-color: #000;
+	background-image: url(../img/stripes-tile.gif);
 	color: #fff;
+}
+#container{
+	background-color: #000;
+}
+h1{
+	margin: 0;
+	font-family: Verdana, sans-serif;
+	
 }
 label{
 	display: block;
@@ -12,6 +21,12 @@ legend{
 	font-size: 18px;
 	color: #ddd;
 	font-weight: bold;
+}
+a{
+	color: #aaa;
+}
+a:hover{
+	color: #fff;
 }
 a.button{
 	border: 1px solid #aaa;
@@ -25,6 +40,18 @@ a.button{
 }
 a.button:hover{
 	background-color: #fff;
+}
+form label{
+	float: left;
+	clear: both;
+	width: 100px;
+	margin-bottom: 5px;
+}
+form input{
+	margin-bottom: 5px;
+}
+#timeline{
+	margin: 0 0 20px;
 }
 .timelineTrack{
 	margin: 2px 0;
@@ -44,4 +71,5 @@ a.button:hover{
 }
 .volumeSlider{
 	width: 100px;
+	margin-left: 100px;
 }
