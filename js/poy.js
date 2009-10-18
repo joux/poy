@@ -104,19 +104,19 @@ function start(){
 }
 
 function loadVideos(){
-	$('#ytplayer1')[0].loadVideoById($('#videoUrl1').val(), 0,'small');
+	$('#ytplayer1')[0].loadVideoById(getYoutubeIdFromUrl($('#videoUrl1').val()), 0,'small');
 	$('#ytplayer1')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer1')[0].pauseVideo();
 	
-	$('#ytplayer2')[0].loadVideoById($('#videoUrl2').val(), 0,'small');
+	$('#ytplayer2')[0].loadVideoById(getYoutubeIdFromUrl($('#videoUrl2').val()), 0,'small');
 	$('#ytplayer2')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer2')[0].pauseVideo();
 	
-	$('#ytplayer3')[0].loadVideoById($('#videoUrl3').val(), 0,'small');
+	$('#ytplayer3')[0].loadVideoById(getYoutubeIdFromUrl($('#videoUrl3').val()), 0,'small');
 	$('#ytplayer3')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer3')[0].pauseVideo();
 	
-	$('#ytplayer4')[0].loadVideoById($('#videoUrl4').val(), 0,'small');
+	$('#ytplayer4')[0].loadVideoById(getYoutubeIdFromUrl($('#videoUrl4').val()), 0,'small');
 	$('#ytplayer4')[0].addEventListener("onStateChange", "onPlayerStateChange");
 	$('#ytplayer4')[0].pauseVideo();
 	$(this).oneTime(2000, function(){
@@ -302,4 +302,8 @@ function getQueryVariable(variable) {
     }
   } 
   return false;
+}
+
+function getYoutubeIdFromUrl(url){
+	return(url.match(/[\\?\\&]v=([^\\?\\&]+)/)[1]);
 }
